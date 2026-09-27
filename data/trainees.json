@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "description": "ملف بيانات محلي ابتدائي لتطبيق بطاقتي — يمكن استعادته من داخل التطبيق.",
+  "trainees": [
+    { "id": "tr-01", "firstName": "ياسين", "lastName": "بن عيسى", "registration": "2025/00147", "passport": "AA384921", "specialty": "الإعلام الآلي", "level": "تقني سامي" },
+    { "id": "tr-02", "firstName": "مريم", "lastName": "قاسمي", "registration": "2025/00148", "passport": "AA384922", "specialty": "المحاسبة والتسيير", "level": "تقني سامي" },
+    { "id": "tr-03", "firstName": "سفيان", "lastName": "حسني", "registration": "2025/00149", "passport": "AA384923", "specialty": "الكهرباء الصناعية", "level": "تقني" },
+    { "id": "tr-04", "firstName": "أميرة", "lastName": "بوشارب", "registration": "2025/00150", "passport": "AA384924", "specialty": "التسويق الرقمي", "level": "تقني سامي" },
+    { "id": "tr-05", "firstName": "عبد الرؤوف", "lastName": "حداد", "registration": "2025/00151", "passport": "AA384925", "specialty": "الطاقات المتجددة", "level": "تقني" }
+  ]
+}
