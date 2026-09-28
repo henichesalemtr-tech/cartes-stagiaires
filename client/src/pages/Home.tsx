@@ -69,19 +69,19 @@ type Settings = {
 };
 
 const STORAGE_KEY = "hakani-cards-state-v1";
-const OFFICIAL_LOGO = "/manus-storage/logo-mfep-1_2a5a705a.png";
-const ALGERIA_FLAG = "/manus-storage/flag-algeria_96057a81.svg";
-const NIGER_FLAG = "/manus-storage/flag-niger_34824a24.svg";
+const OFFICIAL_LOGO = "/logo-mfep.png";
+const ALGERIA_FLAG = "/flag-algeria.svg";
+const NIGER_FLAG = "/flag-niger.svg";
 
 const defaultSettings: Settings = {
   orgAr: "المعهد الوطني المتخصص في التكوين المهني",
-  orgFr: "Institut National Spécialisé de Formation Professionnelle",
+  orgFr: "REPUBLIQUE ALGERIENNE DEMOCRATIQUE ET POPULAIRE",
   line2Ar: "Hassani Abdelkrim",
-  line2Fr: "Hassani Abdelkrim",
+  line2Fr: "Ministere de la formation et de l'enseingnement professionnels",
   line3Ar: "Adrar • Algérie",
-  line3Fr: "Adrar • Algérie",
-  ministryAr: "وزارة التكوين والتعليم المهنيين",
-  ministryFr: "Ministère de la Formation et de l'Enseignement Professionnels",
+  line3Fr: "Institut National Spécialisé de Formation Professionnelle Hassani Abdelkrim",
+  ministryAr: "DFEP d’El Oued",
+  ministryFr: "DFEP d’El Oued",
   cardLanguage: "fr",
   showFlags: true,
   showMinistry: true,
@@ -91,11 +91,11 @@ const defaultSettings: Settings = {
 };
 
 const demoTrainees: Trainee[] = [
-  { id: "tr-01", firstName: "ياسين", lastName: "بن عيسى", registration: "2025/00147", passport: "AA384921", studyYear: "2025 — 2026", specialty: "Informatique", level: "Technicien supérieur" },
-  { id: "tr-02", firstName: "مريم", lastName: "قاسمي", registration: "2025/00148", passport: "AA384922", studyYear: "2025 — 2026", specialty: "Comptabilité et gestion", level: "Technicien supérieur" },
-  { id: "tr-03", firstName: "سفيان", lastName: "حسني", registration: "2025/00149", passport: "AA384923", studyYear: "2025 — 2026", specialty: "Électricité industrielle", level: "Technicien" },
-  { id: "tr-04", firstName: "أميرة", lastName: "بوشارب", registration: "2025/00150", passport: "AA384924", studyYear: "2025 — 2026", specialty: "Marketing digital", level: "Technicien supérieur" },
-  { id: "tr-05", firstName: "عبد الرؤوف", lastName: "حداد", registration: "2025/00151", passport: "AA384925", studyYear: "2025 — 2026", specialty: "Énergies renouvelables", level: "Technicien" },
+  { id: "tr-01", firstName: "Mohamed", lastName: "ALI", registration: "2025/00147", passport: "AA384921", studyYear: "2025 — 2026", specialty: "Informatique", level: "Technicien supérieur" },
+  { id: "tr-02", firstName: "Meriem", lastName: "NOUR", registration: "2025/00148", passport: "AA384922", studyYear: "2025 — 2026", specialty: "Comptabilité et gestion", level: "Technicien supérieur" },
+  { id: "tr-03", firstName: "Salma", lastName: "TEST", registration: "2025/00149", passport: "AA384923", studyYear: "2025 — 2026", specialty: "Électricité industrielle", level: "Technicien" },
+  { id: "tr-04", firstName: "Amir", lastName: "DEEP", registration: "2025/00150", passport: "AA384924", studyYear: "2025 — 2026", specialty: "Marketing digital", level: "Technicien supérieur" },
+  { id: "tr-05", firstName: "Salem", lastName: "HADAD", registration: "2025/00151", passport: "AA384925", studyYear: "2025 — 2026", specialty: "Énergies renouvelables", level: "Technicien" },
 ];
 
 function uid() {
