@@ -73,6 +73,7 @@ type Settings = {
   showPassport: boolean;
   showSpecialty: boolean;
   showPhoto: boolean;
+  showStudyYear: boolean;
   accent: "green" | "blue" | "amber";
 };
 
@@ -97,6 +98,7 @@ const defaultSettings: Settings = {
   showPassport: true,
   showSpecialty: true,
   showPhoto: true,
+  showStudyYear: true,
   accent: "green",
 };
 
@@ -337,7 +339,9 @@ function CardPreview({
       </div>
       <div className="card-footer">
         <span>{isFr ? settings.ministryFr : settings.ministryAr}</span>
-        <span className="valid-chip">{trainee.studyYear || "2025 — 2026"}</span>
+        {settings.showStudyYear && (
+          <span className="valid-chip">{trainee.studyYear || "2025 — 2026"}</span>
+        )}
       </div>
       {onEdit && (
         <button
@@ -698,6 +702,14 @@ function TraineesView({
       toast.success("تم حذف Stagiaire");
     }
   };
+  const removeSelected = () => {
+    if (!selected.length) return;
+    if (confirm(`حذف ${selected.length} متربصين من السجل المحلي؟`)) {
+      setTrainees(trainees.filter(t => !selected.includes(t.id)));
+      setSelected([]);
+      toast.success(`تم حذف ${selected.length} سجلاً`);
+    }
+  };
   const toggle = (id: string) =>
     setSelected(
       selected.includes(id) ? selected.filter(x => x !== id) : [...selected, id]
@@ -739,9 +751,14 @@ function TraineesView({
               <span>Les enregistrements ajoutés apparaissent ici</span>
             )}
             {selected.length > 0 && (
-              <button className="link-button" onClick={() => setSelected([])}>
-                Annuler التحديد
-              </button>
+              <>
+                <button className="link-button" onClick={() => setSelected([])}>
+                  Annuler التحديد
+                </button>
+                <button className="button button-danger" onClick={removeSelected}>
+                  <Trash2 size={14} /> حذف المحدد
+                </button>
+              </>
             )}
           </div>
           <div className="table-tools">
@@ -1125,6 +1142,17 @@ function DesignView({
                   type="checkbox"
                   checked={settings.showPhoto}
                   onChange={e => update("showPhoto", e.target.checked)}
+                />
+                <i />
+              </label>
+              <label className="toggle-row">
+                <span>
+                  <b>Année scolaire</b>
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.showStudyYear}
+                  onChange={e => update("showStudyYear", e.target.checked)}
                 />
                 <i />
               </label>

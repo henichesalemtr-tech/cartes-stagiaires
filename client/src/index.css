@@ -246,6 +246,9 @@ button:active { transform: scale(.985); }
   }
   .print-layout,
   .print-preview-wrap { display: block !important; height: auto !important; overflow: visible !important; }
+  .print-workspace > .view-toolbar,
+  .print-list,
+  .print-preview-toolbar { display: none !important; }
   .a4-sheet { break-inside: avoid; }
 }
 
