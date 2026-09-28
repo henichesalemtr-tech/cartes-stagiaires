@@ -311,3 +311,13 @@ button:active { transform: scale(.985); }
 .id-card .card-header > .flags { transform: scale(var(--card-flags-scale, 1)) !important; }
 .id-card.id-card-compact .card-header > .flags { transform: scale(calc(.8 * var(--card-flags-scale, 1))) !important; }
 .id-card .card-header > .ministry-mark { transform: scale(var(--card-ministry-logo-scale, 1)); transform-origin: center; }
+.id-card .card-name-text b,
+.id-card .card-specialty-text b {
+  display: block;
+  max-width: 17ch;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-overflow: clip;
+}
