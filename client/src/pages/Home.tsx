@@ -376,20 +376,20 @@ function CardPreview({
             <span>{isFr ? "NOM ET PRÉNOM" : "الاسم واللقب"}</span>
             <b>{traineeName(trainee)}</b>
           </div>
-          <div className="info-row info-registration-text">
+          <div className="info-row">
             <span>{isFr ? "Matricule" : "Matricule"}</span>
-            <b>{trainee.registration || "—"}</b>
+            <b className="card-registration-value">{trainee.registration || "—"}</b>
           </div>
           {settings.showPassport && (
-            <div className="info-row info-passport-text">
+            <div className="info-row">
               <span>Passeport</span>
-              <b>{trainee.passport || "—"}</b>
+              <b className="card-passport-value">{trainee.passport || "—"}</b>
             </div>
           )}
           {settings.showSpecialty && (
-            <div className="info-row info-specialty-text">
+            <div className="info-row">
               <span>Spécialité</span>
-              <b>{trainee.specialty || "—"}</b>
+              <b className="card-specialty-value">{trainee.specialty || "—"}</b>
             </div>
           )}
         </div>
