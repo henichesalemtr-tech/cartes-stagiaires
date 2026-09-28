@@ -92,6 +92,7 @@ type Settings = {
   showSpecialty: boolean;
   showPhoto: boolean;
   showStudyYear: boolean;
+  showCardTitle: boolean;
   textScale: number;
   logoScale: number;
   orgScale: number;
@@ -130,6 +131,7 @@ const defaultSettings: Settings = {
   showSpecialty: true,
   showPhoto: true,
   showStudyYear: true,
+  showCardTitle: true,
   textScale: 100,
   logoScale: 100,
   orgScale: 100,
@@ -360,6 +362,9 @@ function CardPreview({
         {settings.showMinistry && <MinistryMark small />}
       </div>
       <div className="card-rule" />
+      {settings.showCardTitle && (
+        <div className="card-stagiaire-title">Cart Stagiaire</div>
+      )}
       <div className="card-body">
         {settings.showPhoto && (
           <div className="photo-box">
@@ -1239,6 +1244,17 @@ function DesignView({
                   type="checkbox"
                   checked={settings.showPhoto}
                   onChange={e => update("showPhoto", e.target.checked)}
+                />
+                <i />
+              </label>
+              <label className="toggle-row">
+                <span>
+                  <b>Cart Stagiaire</b>
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.showCardTitle}
+                  onChange={e => update("showCardTitle", e.target.checked)}
                 />
                 <i />
               </label>

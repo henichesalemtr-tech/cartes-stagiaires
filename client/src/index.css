@@ -324,3 +324,17 @@ button:active { transform: scale(.985); }
 
 .photo-remove { color: #a0564e; }
 .photo-remove:hover { color: #8d3f3c; background: #fff3f1; }
+
+.card-stagiaire-title {
+  margin: 3% 6% 0;
+  color: var(--card-green);
+  text-align: center;
+  font-size: clamp(5px, .9vw, 7px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.id-card-compact .card-stagiaire-title {
+  font-size: clamp(4px, .65vw, 5px);
+}
