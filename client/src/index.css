@@ -314,7 +314,7 @@ button:active { transform: scale(.985); }
 .id-card .card-name-text b,
 .id-card .card-specialty-text b {
   display: block;
-  max-width: 17ch;
+  max-width: 30ch;
   white-space: normal;
   overflow: visible;
   overflow-wrap: break-word;
