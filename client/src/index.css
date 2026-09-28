@@ -204,6 +204,7 @@ button:active { transform: scale(.985); }
 .trainee-name span { color: #6c8a74; font-size: clamp(3px, .7vw, 5.5px); font-weight: 700; }
 .trainee-name b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--card-ink); font-size: clamp(5px, 1.15vw, 8px); line-height: 1.1; }
 .id-card-compact .trainee-name { margin-bottom: 5%; }
+.card-matricule-text { transform: scale(var(--card-registration-scale, 1)); transform-origin: center; }
 
 /* Print each group of nine cards as one centered A4 landscape page. */
 @media print {
@@ -300,7 +301,6 @@ button:active { transform: scale(.985); }
 .id-card .card-line2-text { display: block; transform: scale(var(--card-line2-scale, 1)); transform-origin: center top; }
 .id-card .card-line3-text { display: block; transform: scale(var(--card-line3-scale, 1)); transform-origin: center top; }
 .id-card .card-name-text { transform: scale(var(--card-name-scale, 1)); transform-origin: center; }
-.id-card .card-registration-value { display: inline-block; transform: scale(var(--card-registration-scale, 1)); transform-origin: center; }
 .id-card .card-passport-value { display: inline-block; transform: scale(var(--card-passport-scale, 1)); transform-origin: center; }
 .id-card .card-specialty-value { display: inline-block; transform: scale(var(--card-specialty-scale, 1)); transform-origin: center; }
 .id-card .card-footer-text { transform: scale(var(--card-footer-scale, 1)); transform-origin: center bottom; }

@@ -372,13 +372,13 @@ function CardPreview({
           </div>
         )}
         <div className="trainee-info">
+          <div className="trainee-name card-matricule-text">
+            <span>Matricule</span>
+            <b>{trainee.registration || "—"}</b>
+          </div>
           <div className="trainee-name card-name-text">
             <span>{isFr ? "NOM ET PRÉNOM" : "الاسم واللقب"}</span>
             <b>{traineeName(trainee)}</b>
-          </div>
-          <div className="info-row">
-            <span>{isFr ? "Matricule" : "Matricule"}</span>
-            <b className="card-registration-value">{trainee.registration || "—"}</b>
           </div>
           {settings.showPassport && (
             <div className="info-row">
