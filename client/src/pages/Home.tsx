@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import * as XLSX from "xlsx";
 import QRCode from "qrcode";
 import {
@@ -74,6 +80,8 @@ type Settings = {
   showSpecialty: boolean;
   showPhoto: boolean;
   showStudyYear: boolean;
+  textScale: number;
+  logoScale: number;
   accent: "green" | "blue" | "amber";
 };
 
@@ -99,6 +107,8 @@ const defaultSettings: Settings = {
   showSpecialty: true,
   showPhoto: true,
   showStudyYear: true,
+  textScale: 100,
+  logoScale: 100,
   accent: "green",
 };
 
@@ -283,6 +293,12 @@ function CardPreview({
     <div
       className={`id-card ${compact ? "id-card-compact" : ""} accent-${settings.accent}`}
       dir={isFr ? "ltr" : "rtl"}
+      style={
+        {
+          "--card-text-scale": String(settings.textScale / 100),
+          "--card-logo-scale": String(settings.logoScale / 100),
+        } as CSSProperties
+      }
     >
       <div className="card-wave card-wave-one" />
       <div className="card-wave card-wave-two" />
@@ -340,7 +356,9 @@ function CardPreview({
       <div className="card-footer">
         <span>{isFr ? settings.ministryFr : settings.ministryAr}</span>
         {settings.showStudyYear && (
-          <span className="valid-chip">{trainee.studyYear || "2025 — 2026"}</span>
+          <span className="valid-chip">
+            {trainee.studyYear || "2025 — 2026"}
+          </span>
         )}
       </div>
       {onEdit && (
@@ -755,7 +773,10 @@ function TraineesView({
                 <button className="link-button" onClick={() => setSelected([])}>
                   Annuler التحديد
                 </button>
-                <button className="button button-danger" onClick={removeSelected}>
+                <button
+                  className="button button-danger"
+                  onClick={removeSelected}
+                >
                   <Trash2 size={14} /> حذف المحدد
                 </button>
               </>
@@ -994,7 +1015,7 @@ function DesignView({
   setSettings: (s: Settings) => void;
   trainee: Trainee;
 }) {
-  const update = (key: keyof Settings, value: string | boolean) =>
+  const update = (key: keyof Settings, value: string | boolean | number) =>
     setSettings({ ...settings, [key]: value });
   return (
     <div className="page-content">
@@ -1157,6 +1178,36 @@ function DesignView({
                 <i />
               </label>
             </div>
+            <div className="scale-controls">
+              <label className="scale-control">
+                <span>
+                  <b>Taille des textes</b>
+                  <output>{settings.textScale}%</output>
+                </span>
+                <input
+                  type="range"
+                  min="75"
+                  max="140"
+                  step="5"
+                  value={settings.textScale}
+                  onChange={e => update("textScale", Number(e.target.value))}
+                />
+              </label>
+              <label className="scale-control">
+                <span>
+                  <b>Taille des logos</b>
+                  <output>{settings.logoScale}%</output>
+                </span>
+                <input
+                  type="range"
+                  min="70"
+                  max="140"
+                  step="5"
+                  value={settings.logoScale}
+                  onChange={e => update("logoScale", Number(e.target.value))}
+                />
+              </label>
+            </div>
             <div className="color-picker">
               <span>Couleur principale</span>
               <div>
@@ -1310,9 +1361,7 @@ function PrintView({
                 )}
               </div>
               <div>
-                <strong>
-                  {traineeName(t)}
-                </strong>
+                <strong>{traineeName(t)}</strong>
                 <span>{t.registration}</span>
               </div>
               <BadgeCheck
@@ -1340,7 +1389,10 @@ function PrintView({
                 ))}
                 {Array.from({ length: Math.max(0, 9 - page.length) }).map(
                   (_, i) => (
-                    <div key={`empty-${pageIndex}-${i}`} className="empty-print-cell">
+                    <div
+                      key={`empty-${pageIndex}-${i}`}
+                      className="empty-print-cell"
+                    >
                       <Plus size={16} />
                     </div>
                   )

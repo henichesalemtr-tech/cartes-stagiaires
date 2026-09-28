@@ -274,3 +274,20 @@ button:active { transform: scale(.985); }
   }
   .a4-sheet .print-grid .id-card { width: 100%; }
 }
+
+/* Card typography and logo scale controls */
+.scale-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; padding-top: 17px; border-top: 1px solid #eef2ee; }
+.scale-control { margin: 0; }
+.scale-control > span { display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px; color: #5a7162; }
+.scale-control > span b { font-size: 10px; font-weight: 600; }
+.scale-control output { color: #397651; font: 10px ui-monospace, monospace; }
+.scale-control input[type="range"] { width: 100%; height: 5px; accent-color: #4e9867; cursor: pointer; }
+.id-card .card-titles,
+.id-card .trainee-info,
+.id-card .card-footer { transform: scale(var(--card-text-scale, 1)); }
+.id-card .card-titles { transform-origin: center top; }
+.id-card .trainee-info { transform-origin: center; }
+.id-card .card-footer { transform-origin: center bottom; }
+.id-card .card-header > .flags { transform: scale(var(--card-logo-scale, 1)); }
+.id-card.id-card-compact .card-header > .flags { transform: scale(calc(.8 * var(--card-logo-scale, 1))); }
+.id-card .card-header > .ministry-mark { transform: scale(var(--card-logo-scale, 1)); transform-origin: center; }
