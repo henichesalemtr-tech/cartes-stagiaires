@@ -366,7 +366,7 @@ function CardPreview({
       </div>
       <div className="card-rule" />
       {settings.showCardTitle && (
-        <div className="card-stagiaire-title">Cart Stagiaire</div>
+        <div className="card-stagiaire-title">Carte de stagiaire</div>
       )}
       <div className="card-body">
         {settings.showPhoto && (
@@ -1252,7 +1252,7 @@ function DesignView({
               </label>
               <label className="toggle-row">
                 <span>
-                  <b>Cart Stagiaire</b>
+                  <b>Carte de stagiaire</b>
                 </span>
                 <input
                   type="checkbox"
@@ -1285,7 +1285,7 @@ function DesignView({
               <ScaleSlider label="Année scolaire" value={settings.studyYearScale} onChange={v => update("studyYearScale", v)} />
               <ScaleSlider label="العلمان" value={settings.flagsScale} onChange={v => update("flagsScale", v)} min={70} />
               <ScaleSlider label="شعار الوزارة" value={settings.ministryLogoScale} onChange={v => update("ministryLogoScale", v)} min={70} />
-              <ScaleSlider label="Cart Stagiaire" value={settings.cardTitleScale} onChange={v => update("cardTitleScale", v)} min={70} />
+              <ScaleSlider label="Carte de stagiaire" value={settings.cardTitleScale} onChange={v => update("cardTitleScale", v)} min={0} max={300} />
             </div>
             <div className="color-picker">
               <span>Couleur principale</span>
