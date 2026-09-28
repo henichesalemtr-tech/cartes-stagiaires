@@ -291,3 +291,20 @@ button:active { transform: scale(.985); }
 .id-card .card-header > .flags { transform: scale(var(--card-logo-scale, 1)); }
 .id-card.id-card-compact .card-header > .flags { transform: scale(calc(.8 * var(--card-logo-scale, 1))); }
 .id-card .card-header > .ministry-mark { transform: scale(var(--card-logo-scale, 1)); transform-origin: center; }
+
+/* Independent scale for every card text and logo group */
+.id-card .card-titles,
+.id-card .trainee-info,
+.id-card .card-footer { transform: none; }
+.id-card .card-org-text { display: block; transform: scale(var(--card-org-scale, 1)); transform-origin: center top; }
+.id-card .card-line2-text { display: block; transform: scale(var(--card-line2-scale, 1)); transform-origin: center top; }
+.id-card .card-line3-text { display: block; transform: scale(var(--card-line3-scale, 1)); transform-origin: center top; }
+.id-card .card-name-text { transform: scale(var(--card-name-scale, 1)); transform-origin: center; }
+.id-card .info-registration-text { transform: scale(var(--card-registration-scale, 1)); transform-origin: center; }
+.id-card .info-passport-text { transform: scale(var(--card-passport-scale, 1)); transform-origin: center; }
+.id-card .info-specialty-text { transform: scale(var(--card-specialty-scale, 1)); transform-origin: center; }
+.id-card .card-footer-text { transform: scale(var(--card-footer-scale, 1)); transform-origin: center bottom; }
+.id-card .card-study-year-text { transform: scale(var(--card-study-year-scale, 1)); transform-origin: center bottom; }
+.id-card .card-header > .flags { transform: scale(var(--card-flags-scale, 1)) !important; }
+.id-card.id-card-compact .card-header > .flags { transform: scale(calc(.8 * var(--card-flags-scale, 1))) !important; }
+.id-card .card-header > .ministry-mark { transform: scale(var(--card-ministry-logo-scale, 1)); transform-origin: center; }

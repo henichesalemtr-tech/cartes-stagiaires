@@ -50,6 +50,18 @@ type View =
   | "print"
   | "settings";
 type Lang = "ar" | "fr";
+type ScaleKey =
+  | "orgScale"
+  | "line2Scale"
+  | "line3Scale"
+  | "nameScale"
+  | "registrationScale"
+  | "passportScale"
+  | "specialtyScale"
+  | "footerScale"
+  | "studyYearScale"
+  | "flagsScale"
+  | "ministryLogoScale";
 
 type Trainee = {
   id: string;
@@ -82,6 +94,17 @@ type Settings = {
   showStudyYear: boolean;
   textScale: number;
   logoScale: number;
+  orgScale: number;
+  line2Scale: number;
+  line3Scale: number;
+  nameScale: number;
+  registrationScale: number;
+  passportScale: number;
+  specialtyScale: number;
+  footerScale: number;
+  studyYearScale: number;
+  flagsScale: number;
+  ministryLogoScale: number;
   accent: "green" | "blue" | "amber";
 };
 
@@ -109,6 +132,17 @@ const defaultSettings: Settings = {
   showStudyYear: true,
   textScale: 100,
   logoScale: 100,
+  orgScale: 100,
+  line2Scale: 100,
+  line3Scale: 100,
+  nameScale: 100,
+  registrationScale: 100,
+  passportScale: 100,
+  specialtyScale: 100,
+  footerScale: 100,
+  studyYearScale: 100,
+  flagsScale: 100,
+  ministryLogoScale: 100,
   accent: "green",
 };
 
@@ -297,6 +331,17 @@ function CardPreview({
         {
           "--card-text-scale": String(settings.textScale / 100),
           "--card-logo-scale": String(settings.logoScale / 100),
+          "--card-org-scale": String(settings.orgScale / 100),
+          "--card-line2-scale": String(settings.line2Scale / 100),
+          "--card-line3-scale": String(settings.line3Scale / 100),
+          "--card-name-scale": String(settings.nameScale / 100),
+          "--card-registration-scale": String(settings.registrationScale / 100),
+          "--card-passport-scale": String(settings.passportScale / 100),
+          "--card-specialty-scale": String(settings.specialtyScale / 100),
+          "--card-footer-scale": String(settings.footerScale / 100),
+          "--card-study-year-scale": String(settings.studyYearScale / 100),
+          "--card-flags-scale": String(settings.flagsScale / 100),
+          "--card-ministry-logo-scale": String(settings.ministryLogoScale / 100),
         } as CSSProperties
       }
     >
@@ -308,9 +353,9 @@ function CardPreview({
       <div className="card-header">
         {settings.showFlags && <Flags />}
         <div className="card-titles">
-          <span>{isFr ? settings.orgFr : settings.orgAr}</span>
-          <strong>{isFr ? settings.line2Fr : settings.line2Ar}</strong>
-          <small>{isFr ? settings.line3Fr : settings.line3Ar}</small>
+          <span className="card-org-text">{isFr ? settings.orgFr : settings.orgAr}</span>
+          <strong className="card-line2-text">{isFr ? settings.line2Fr : settings.line2Ar}</strong>
+          <small className="card-line3-text">{isFr ? settings.line3Fr : settings.line3Ar}</small>
         </div>
         {settings.showMinistry && <MinistryMark small />}
       </div>
@@ -327,22 +372,22 @@ function CardPreview({
           </div>
         )}
         <div className="trainee-info">
-          <div className="trainee-name">
+          <div className="trainee-name card-name-text">
             <span>{isFr ? "NOM ET PRÉNOM" : "الاسم واللقب"}</span>
             <b>{traineeName(trainee)}</b>
           </div>
-          <div className="info-row">
+          <div className="info-row info-registration-text">
             <span>{isFr ? "Matricule" : "Matricule"}</span>
             <b>{trainee.registration || "—"}</b>
           </div>
           {settings.showPassport && (
-            <div className="info-row">
+            <div className="info-row info-passport-text">
               <span>Passeport</span>
               <b>{trainee.passport || "—"}</b>
             </div>
           )}
           {settings.showSpecialty && (
-            <div className="info-row">
+            <div className="info-row info-specialty-text">
               <span>Spécialité</span>
               <b>{trainee.specialty || "—"}</b>
             </div>
@@ -354,9 +399,9 @@ function CardPreview({
         </div>
       </div>
       <div className="card-footer">
-        <span>{isFr ? settings.ministryFr : settings.ministryAr}</span>
+        <span className="card-footer-text">{isFr ? settings.ministryFr : settings.ministryAr}</span>
         {settings.showStudyYear && (
-          <span className="valid-chip">
+          <span className="valid-chip card-study-year-text">
             {trainee.studyYear || "2025 — 2026"}
           </span>
         )}
@@ -1006,6 +1051,37 @@ function ImportView({
   );
 }
 
+function ScaleSlider({
+  label,
+  value,
+  min = 70,
+  max = 140,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min?: number;
+  max?: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <label className="scale-control">
+      <span>
+        <b>{label}</b>
+        <output>{value}%</output>
+      </span>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step="5"
+        value={value}
+        onChange={e => onChange(Number(e.target.value))}
+      />
+    </label>
+  );
+}
+
 function DesignView({
   settings,
   setSettings,
@@ -1179,34 +1255,17 @@ function DesignView({
               </label>
             </div>
             <div className="scale-controls">
-              <label className="scale-control">
-                <span>
-                  <b>Taille des textes</b>
-                  <output>{settings.textScale}%</output>
-                </span>
-                <input
-                  type="range"
-                  min="75"
-                  max="140"
-                  step="5"
-                  value={settings.textScale}
-                  onChange={e => update("textScale", Number(e.target.value))}
-                />
-              </label>
-              <label className="scale-control">
-                <span>
-                  <b>Taille des logos</b>
-                  <output>{settings.logoScale}%</output>
-                </span>
-                <input
-                  type="range"
-                  min="70"
-                  max="140"
-                  step="5"
-                  value={settings.logoScale}
-                  onChange={e => update("logoScale", Number(e.target.value))}
-                />
-              </label>
+              <ScaleSlider label="السطر الأول / Organisation" value={settings.orgScale} onChange={v => update("orgScale", v)} />
+              <ScaleSlider label="السطر الثاني / Institut" value={settings.line2Scale} onChange={v => update("line2Scale", v)} />
+              <ScaleSlider label="السطر الثالث / Adresse" value={settings.line3Scale} onChange={v => update("line3Scale", v)} />
+              <ScaleSlider label="الاسم واللقب" value={settings.nameScale} onChange={v => update("nameScale", v)} />
+              <ScaleSlider label="Matricule" value={settings.registrationScale} onChange={v => update("registrationScale", v)} />
+              <ScaleSlider label="Passeport" value={settings.passportScale} onChange={v => update("passportScale", v)} />
+              <ScaleSlider label="Spécialité" value={settings.specialtyScale} onChange={v => update("specialtyScale", v)} />
+              <ScaleSlider label="النص السفلي" value={settings.footerScale} onChange={v => update("footerScale", v)} />
+              <ScaleSlider label="Année scolaire" value={settings.studyYearScale} onChange={v => update("studyYearScale", v)} />
+              <ScaleSlider label="العلمان" value={settings.flagsScale} onChange={v => update("flagsScale", v)} min={70} />
+              <ScaleSlider label="شعار الوزارة" value={settings.ministryLogoScale} onChange={v => update("ministryLogoScale", v)} min={70} />
             </div>
             <div className="color-picker">
               <span>Couleur principale</span>
