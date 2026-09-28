@@ -1194,6 +1194,11 @@ function PrintView({
     setSelected(trainees.slice(0, 9).map(t => t.id));
   }, [trainees.length]);
   const chosen = trainees.filter(t => selected.includes(t.id));
+  const pages = chosen.length
+    ? Array.from({ length: Math.ceil(chosen.length / 9) }, (_, pageIndex) =>
+        chosen.slice(pageIndex * 9, pageIndex * 9 + 9)
+      )
+    : [[] as Trainee[]];
   const toggle = (id: string) =>
     setSelected(
       selected.includes(id) ? selected.filter(x => x !== id) : [...selected, id]
@@ -1294,25 +1299,27 @@ function PrintView({
             <span>Feuille A4 · grille 3 × 3</span>
             <span className="scale-note">Proportions CR80 conservées</span>
           </div>
-          <div className="a4-sheet">
-            <div className="print-grid">
-              {chosen.slice(0, 9).map(t => (
-                <CardPreview
-                  key={t.id}
-                  trainee={t}
-                  settings={settings}
-                  compact
-                />
-              ))}
-              {Array.from({ length: Math.max(0, 9 - chosen.length) }).map(
-                (_, i) => (
-                  <div key={`empty-${i}`} className="empty-print-cell">
-                    <Plus size={16} />
-                  </div>
-                )
-              )}
+          {pages.map((page, pageIndex) => (
+            <div className="a4-sheet" key={`page-${pageIndex}`}>
+              <div className="print-grid">
+                {page.map(t => (
+                  <CardPreview
+                    key={t.id}
+                    trainee={t}
+                    settings={settings}
+                    compact
+                  />
+                ))}
+                {Array.from({ length: Math.max(0, 9 - page.length) }).map(
+                  (_, i) => (
+                    <div key={`empty-${pageIndex}-${i}`} className="empty-print-cell">
+                      <Plus size={16} />
+                    </div>
+                  )
+                )}
+              </div>
             </div>
-          </div>
+          ))}
         </section>
       </div>
     </div>

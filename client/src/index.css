@@ -204,3 +204,42 @@ button:active { transform: scale(.985); }
 .trainee-name span { color: #6c8a74; font-size: clamp(3px, .7vw, 5.5px); font-weight: 700; }
 .trainee-name b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--card-ink); font-size: clamp(5px, 1.15vw, 8px); line-height: 1.1; }
 .id-card-compact .trainee-name { margin-bottom: 5%; }
+
+/* Print each group of nine cards as one centered A4 landscape page. */
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  html, body { width: 297mm; height: 210mm; margin: 0 !important; }
+  .print-preview-wrap { width: 297mm !important; min-height: 0 !important; }
+  .a4-sheet {
+    width: 297mm !important;
+    height: 210mm !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always;
+    break-after: page;
+  }
+  .a4-sheet:last-child { page-break-after: auto; break-after: auto; }
+  .print-grid {
+    width: 264.8mm !important;
+    height: 169.94mm !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 85.6mm) !important;
+    grid-template-rows: repeat(3, 53.98mm) !important;
+    grid-auto-rows: 53.98mm !important;
+    gap: 4mm !important;
+    justify-content: start !important;
+    align-content: start !important;
+  }
+  .print-grid .id-card {
+    width: 85.6mm !important;
+    height: 53.98mm !important;
+    min-width: 85.6mm !important;
+    max-width: 85.6mm !important;
+    min-height: 53.98mm !important;
+    max-height: 53.98mm !important;
+  }
+}
