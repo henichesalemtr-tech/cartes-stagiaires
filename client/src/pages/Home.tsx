@@ -106,6 +106,7 @@ type Settings = {
   studyYearScale: number;
   flagsScale: number;
   ministryLogoScale: number;
+  cardTitleScale: number;
   accent: "green" | "blue" | "amber";
 };
 
@@ -145,6 +146,7 @@ const defaultSettings: Settings = {
   studyYearScale: 100,
   flagsScale: 100,
   ministryLogoScale: 100,
+  cardTitleScale: 100,
   accent: "green",
 };
 
@@ -344,6 +346,7 @@ function CardPreview({
           "--card-study-year-scale": String(settings.studyYearScale / 100),
           "--card-flags-scale": String(settings.flagsScale / 100),
           "--card-ministry-logo-scale": String(settings.ministryLogoScale / 100),
+          "--card-title-scale": String(settings.cardTitleScale / 100),
         } as CSSProperties
       }
     >
@@ -1282,6 +1285,7 @@ function DesignView({
               <ScaleSlider label="Année scolaire" value={settings.studyYearScale} onChange={v => update("studyYearScale", v)} />
               <ScaleSlider label="العلمان" value={settings.flagsScale} onChange={v => update("flagsScale", v)} min={70} />
               <ScaleSlider label="شعار الوزارة" value={settings.ministryLogoScale} onChange={v => update("ministryLogoScale", v)} min={70} />
+              <ScaleSlider label="Cart Stagiaire" value={settings.cardTitleScale} onChange={v => update("cardTitleScale", v)} min={70} />
             </div>
             <div className="color-picker">
               <span>Couleur principale</span>

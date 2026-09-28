@@ -338,3 +338,5 @@ button:active { transform: scale(.985); }
 .id-card-compact .card-stagiaire-title {
   font-size: clamp(4px, .65vw, 5px);
 }
+
+.card-stagiaire-title { transform: scale(var(--card-title-scale, 1)); transform-origin: center top; }
