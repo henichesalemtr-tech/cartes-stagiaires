@@ -381,13 +381,13 @@ function CardPreview({
             <b>{traineeName(trainee)}</b>
           </div>
           {settings.showPassport && (
-            <div className="info-row">
+            <div className="trainee-name card-passport-text">
               <span>Passeport</span>
               <b className="card-passport-value">{trainee.passport || "—"}</b>
             </div>
           )}
           {settings.showSpecialty && (
-            <div className="info-row">
+            <div className="trainee-name card-specialty-text">
               <span>Spécialité</span>
               <b className="card-specialty-value">{trainee.specialty || "—"}</b>
             </div>
