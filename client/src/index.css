@@ -247,7 +247,6 @@ button:active { transform: scale(.985); }
   .print-layout,
   .print-preview-wrap { display: block !important; height: auto !important; overflow: visible !important; }
   .a4-sheet { break-inside: avoid; }
-  .a4-sheet + .a4-sheet { page-break-before: always; break-before: page; }
 }
 
 /* Landscape A4 preview on screen, matching the exported page orientation. */
