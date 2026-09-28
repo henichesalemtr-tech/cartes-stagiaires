@@ -209,6 +209,8 @@ button:active { transform: scale(.985); }
 @media print {
   @page { size: A4 landscape; margin: 0; }
   html, body { width: 297mm; height: 210mm; margin: 0 !important; }
+  .print-workspace,
+  .print-workspace.page-content { width: 297mm !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
   .print-preview-wrap { width: 297mm !important; min-height: 0 !important; }
   .a4-sheet {
     width: 297mm !important;
@@ -242,4 +244,31 @@ button:active { transform: scale(.985); }
     min-height: 53.98mm !important;
     max-height: 53.98mm !important;
   }
+  .print-layout,
+  .print-preview-wrap { display: block !important; height: auto !important; overflow: visible !important; }
+  .a4-sheet { break-inside: avoid; }
+  .a4-sheet + .a4-sheet { page-break-before: always; break-before: page; }
+}
+
+/* Landscape A4 preview on screen, matching the exported page orientation. */
+@media screen {
+  .print-preview-wrap { overflow: visible; }
+  .a4-sheet {
+    width: min(100%, 980px);
+    aspect-ratio: 297 / 210;
+    min-height: 0;
+    padding: clamp(18px, 3vw, 38px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .a4-sheet + .a4-sheet { margin-top: 24px; }
+  .a4-sheet .print-grid {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    align-items: center;
+  }
+  .a4-sheet .print-grid .id-card { width: 100%; }
 }
