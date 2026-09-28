@@ -321,3 +321,6 @@ button:active { transform: scale(.985); }
   word-break: normal;
   text-overflow: clip;
 }
+
+.photo-remove { color: #a0564e; }
+.photo-remove:hover { color: #8d3f3c; background: #fff3f1; }

@@ -1580,6 +1580,10 @@ function TraineeEditor({
     reader.onload = () => set("photo", String(reader.result));
     reader.readAsDataURL(file);
   };
+  const removeImage = () => {
+    set("photo", "");
+    if (imageRef.current) imageRef.current.value = "";
+  };
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.fullName?.trim() || !form.registration) {
@@ -1631,6 +1635,15 @@ function TraineeEditor({
               <ImagePlus size={15} />{" "}
               {form.photo ? "Changer la photo" : "Ajouter une photo"}
             </button>
+            {form.photo && (
+              <button
+                type="button"
+                className="text-button photo-remove"
+                onClick={removeImage}
+              >
+                <Trash2 size={14} /> حذف الصورة
+              </button>
+            )}
             <small>JPG أو PNG · صورة شخصية</small>
           </div>
           <div className="editor-fields">
