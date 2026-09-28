@@ -206,7 +206,9 @@ button:active { transform: scale(.985); }
 .id-card-compact .trainee-name { margin-bottom: 5%; }
 .trainee-info { text-align: left; }
 .trainee-name { align-items: flex-start; text-align: left; }
-.card-matricule-text { transform: scale(var(--card-registration-scale, 1)); transform-origin: center; }
+.card-matricule-text,
+.card-specialty-text { transform: scale(var(--card-registration-scale, 1)); transform-origin: left top; }
+.card-specialty-text { transform: scale(var(--card-specialty-scale, 1)); }
 
 /* Print each group of nine cards as one centered A4 landscape page. */
 @media print {
@@ -302,9 +304,8 @@ button:active { transform: scale(.985); }
 .id-card .card-org-text { display: block; transform: scale(var(--card-org-scale, 1)); transform-origin: center top; }
 .id-card .card-line2-text { display: block; transform: scale(var(--card-line2-scale, 1)); transform-origin: center top; }
 .id-card .card-line3-text { display: block; transform: scale(var(--card-line3-scale, 1)); transform-origin: center top; }
-.id-card .card-name-text { transform: scale(var(--card-name-scale, 1)); transform-origin: center; }
+.id-card .card-name-text { transform: scale(var(--card-name-scale, 1)); transform-origin: left top; }
 .id-card .card-passport-value { display: inline-block; transform: scale(var(--card-passport-scale, 1)); transform-origin: center; }
-.id-card .card-specialty-value { display: inline-block; transform: scale(var(--card-specialty-scale, 1)); transform-origin: center; }
 .id-card .card-footer-text { transform: scale(var(--card-footer-scale, 1)); transform-origin: center bottom; }
 .id-card .card-study-year-text { transform: scale(var(--card-study-year-scale, 1)); transform-origin: center bottom; }
 .id-card .card-header > .flags { transform: scale(var(--card-flags-scale, 1)) !important; }
