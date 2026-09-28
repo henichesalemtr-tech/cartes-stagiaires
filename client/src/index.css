@@ -198,3 +198,9 @@ button:active { transform: scale(.985); }
 .app-shell[dir="ltr"] .user-mini { direction: ltr; }
 
 .flag-image { width: 20px; height: 20px; display: block; object-fit: cover; border-radius: 2px; box-shadow: 0 1px 2px #123b221a; } .flags { gap: 3px; } .print-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; } .pdf-capture { width: 1122px !important; height: 794px !important; min-height: 794px !important; max-width: none !important; padding: 38px !important; box-sizing: border-box; } .pdf-capture .print-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+/* Unified trainee name shown on the card */
+.trainee-name { display: flex; flex-direction: column; gap: 2px; margin-bottom: 7%; min-width: 0; }
+.trainee-name span { color: #6c8a74; font-size: clamp(3px, .7vw, 5.5px); font-weight: 700; }
+.trainee-name b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--card-ink); font-size: clamp(5px, 1.15vw, 8px); line-height: 1.1; }
+.id-card-compact .trainee-name { margin-bottom: 5%; }
