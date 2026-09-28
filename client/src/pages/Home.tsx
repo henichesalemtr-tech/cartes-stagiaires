@@ -121,8 +121,8 @@ const defaultSettings: Settings = {
   line3Ar: "Adrar • Algérie",
   line3Fr:
     "Institut National Spécialisé de Formation Professionnelle Hassani Abdelkrim",
-  ministryAr: "DFEP d’El Oued",
-  ministryFr: "DFEP d’El Oued",
+  ministryAr: "",
+  ministryFr: "",
   cardLanguage: "fr",
   showFlags: true,
   showMinistry: true,
